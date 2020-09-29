@@ -22,17 +22,19 @@ def add_time(start, duration, day=""):
             ref = days[day.upper()] + crosses // 2
         elif  PM == True:
             ref = days[day.upper()] + crosses // 2 + crosses % 2
+        if ref > 7:
+            ref = ref % 7
         return list(days.keys())[list(days.values()).index(ref)].title()
 
+#### Processing input data ####
     # Transforming the start time in suitable programming entities
-    start_hours = int(start.split(":")[0])
-    rest = start.split(":")[1]
-    start_minutes = int(rest.split(" ")[0])
-    start_APM = rest.split(" ")[1]
+    start_hours, rest = start.split(":")
+    start_minutes, start_APM = rest.split(" ")
+    start_hours = int(start_hours)
+    start_minutes = int(start_minutes)
 
     # Transforming the duration in suitable programming entities
-    duration_hours = int(duration.split(":")[0])
-    duration_minutes = int(duration.split(":")[1])
+    duration_hours, duration_minutes = int(duration.split(":")[0]), int(duration.split(":")[1])
 
     # Managing minutes addition 
     new_minutes = start_minutes + duration_minutes
@@ -51,6 +53,7 @@ def add_time(start, duration, day=""):
     if new_hour == 0:
         new_hour = 12
 
+#### Displaying processed data #### 
     # When optional chosen weekday is turned off
     if day == "":
         # No change AM/PM

@@ -17,3 +17,5 @@ print(add_time("11:43 PM", "24:20", "tueSday"))
 
 print(add_time("6:30 PM", "205:12"))
 # # Returns: 7:42 AM (9 days later)
+
+print(add_time("11:43 PM", "30:30", "sAtUrDay"))
